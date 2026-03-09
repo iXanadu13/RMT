@@ -7,6 +7,7 @@ OnExitSoft(*) {
 
 BindKey() {
     BindPauseHotkey()
+    BindHoldPauseHotkey()
     BindShortcut(MySoftData.KillMacroHotkey, OnKillAllMacro)
     BindShortcut(ToolCheckInfo.ToolCheckHotKey, OnToolCheckHotkey)
     BindShortcut(ToolCheckInfo.ToolTextFilterHotKey, OnToolTextFilterScreenShot)
@@ -35,6 +36,16 @@ BindPauseHotkey() {
     if (MySoftData.PauseHotkey != "") {
         key := "$*~" MySoftData.PauseHotkey
         Hotkey(key, OnPauseHotkey, "S")
+    }
+}
+
+BindHoldPauseHotkey() {
+    global MySoftData
+    if (MySoftData.HoldPauseHotkey != "") {
+        keyDown := "$*~" MySoftData.HoldPauseHotkey
+        keyUp := "$*~" MySoftData.HoldPauseHotkey " Up"
+        Hotkey(keyDown, OnHoldPauseDown, "S")
+        Hotkey(keyUp, OnHoldPauseUp, "S")
     }
 }
 
@@ -980,6 +991,25 @@ OnPauseHotkey(*) {
     OnKillAllMacro()
 
     Suspend(MySoftData.IsPause)
+}
+
+OnHoldPauseDown(*) {
+    global MySoftData
+    if (!MySoftData.IsPause) {
+        MySoftData.IsPause := true
+        MySoftData.PauseToggleCtrl.Value := true
+        OnKillAllMacro()
+        Suspend(true)
+    }
+}
+
+OnHoldPauseUp(*) {
+    global MySoftData
+    if (MySoftData.IsPause) {
+        MySoftData.IsPause := false
+        MySoftData.PauseToggleCtrl.Value := false
+        Suspend(false)
+    }
 }
 
 OnKillAllMacro(*) {

@@ -401,8 +401,13 @@ AddSettingUI(index) {
     MySoftData.PauseHotkeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 140, posY - 4), MySoftData.PauseHotkey
     )
 
-    con := MyGui.Add("Text", Format("x{} y{} w130", posX + 290, posY), "终止宏快捷方式:")
-    MySoftData.KillMacroHotkeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 410, posY - 4), MySoftData
+    con := MyGui.Add("Text", Format("x{} y{} w130", posX + 290, posY), "按住暂停快捷键:")
+    MySoftData.HoldPauseHotkeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 410, posY - 4), MySoftData
+    .HoldPauseHotkey)
+
+    posY += 30
+    con := MyGui.Add("Text", Format("x{} y{} w130", posX + 20, posY), "终止宏快捷方式:")
+    MySoftData.KillMacroHotkeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 140, posY - 4), MySoftData
     .KillMacroHotkey)
 
     MyGui.Add("Text", Format("x{} y{}", posX + 550, posY), "鼠标信息快捷方式:")
