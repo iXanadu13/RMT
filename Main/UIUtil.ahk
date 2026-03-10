@@ -73,10 +73,16 @@ AddOperBtnUI() {
 
     posY := 35
     ; 暂停模块
-    MySoftData.PauseToggleCtrl := MyGui.Add("CheckBox", Format("x{} y{} w{} h{}", 15, posY, 100, 20), "暂停")
+    MySoftData.PauseToggleCtrl := MyGui.Add("CheckBox", Format("x{} y{} w{} h{}", 15, posY, 45, 20), "暂停")
     MySoftData.PauseToggleCtrl.Value := MySoftData.IsPause
     MySoftData.PauseToggleCtrl.OnEvent("Click", OnPauseHotkey)
     MySoftData.FixedCons.Push(MySoftData.PauseToggleCtrl)
+
+    MySoftData.LockToggleCtrl := MyGui.Add("CheckBox", Format("x{} y{} w{} h{}", 70, posY, 45, 20), "Lock")
+    MySoftData.LockToggleCtrl.Value := MySoftData.IsLock
+    MySoftData.LockToggleCtrl.OnEvent("Click", OnLockHotkey)
+    MySoftData.FixedCons.Push(MySoftData.LockToggleCtrl)
+
     posY += 20
     con := MyGui.Add("Hotkey", Format("x{} y{} w{} h{}", 15, posY, 100, 20), MySoftData.PauseHotkey)
     con.Enabled := false
@@ -404,6 +410,10 @@ AddSettingUI(index) {
     con := MyGui.Add("Text", Format("x{} y{} w130", posX + 290, posY), "按住暂停快捷键:")
     MySoftData.HoldPauseHotkeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 410, posY - 4), MySoftData
     .HoldPauseHotkey)
+
+    con := MyGui.Add("Text", Format("x{} y{} w130", posX + 550, posY), "锁定快捷键:")
+    MySoftData.LockHotkeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 665, posY - 4), MySoftData
+    .LockHotkey)
 
     posY += 30
     con := MyGui.Add("Text", Format("x{} y{} w130", posX + 20, posY), "终止宏快捷方式:")

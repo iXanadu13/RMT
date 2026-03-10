@@ -112,6 +112,11 @@ class SoftData {
         this.PauseToggleCtrl := ""
         this.PauseHotkey := ""
         this.PauseHotkeyCtrl := ""
+        this.HoldPauseHotkeyCtrl := ""
+        this.isLock := false
+        this.LockToggleCtrl := ""
+        this.LockHotkey := ""
+        this.LockHotkeyCtrl := ""
         this.KillMacroHotkey := ""
         this.KillMacroHotkeyCtrl := ""
         this.HoldFloat := 0

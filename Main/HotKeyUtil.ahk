@@ -7,6 +7,7 @@ OnExitSoft(*) {
 
 BindKey() {
     BindPauseHotkey()
+    BindLockHotkey()
     BindHoldPauseHotkey()
     BindShortcut(MySoftData.KillMacroHotkey, OnKillAllMacro)
     BindShortcut(ToolCheckInfo.ToolCheckHotKey, OnToolCheckHotkey)
@@ -36,6 +37,14 @@ BindPauseHotkey() {
     if (MySoftData.PauseHotkey != "") {
         key := "$*~" MySoftData.PauseHotkey
         Hotkey(key, OnPauseHotkey, "S")
+    }
+}
+
+BindLockHotkey() {
+    global MySoftData
+    if (MySoftData.LockHotkey != "") {
+        key := "$*~" MySoftData.LockHotkey
+        Hotkey(key, OnLockHotkey, "S")
     }
 }
 
@@ -993,9 +1002,16 @@ OnPauseHotkey(*) {
     Suspend(MySoftData.IsPause)
 }
 
+; 用于锁住HoldPause功能
+OnLockHotkey(*) {
+    global MySoftData ; 访问全局变量
+    MySoftData.IsLock := !MySoftData.IsLock
+    MySoftData.LockToggleCtrl.Value := MySoftData.IsLock
+}
+
 OnHoldPauseDown(*) {
     global MySoftData
-    if (!MySoftData.IsPause) {
+    if (!MySoftData.IsLock && !MySoftData.IsPause) {
         MySoftData.IsPause := true
         MySoftData.PauseToggleCtrl.Value := true
         OnKillAllMacro()
@@ -1005,7 +1021,7 @@ OnHoldPauseDown(*) {
 
 OnHoldPauseUp(*) {
     global MySoftData
-    if (MySoftData.IsPause) {
+    if (!MySoftData.IsLock && MySoftData.IsPause) {
         MySoftData.IsPause := false
         MySoftData.PauseToggleCtrl.Value := false
         Suspend(false)
