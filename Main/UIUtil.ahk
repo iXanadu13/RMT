@@ -1,7 +1,7 @@
 ;窗口&UI刷新
 InitUI() {
     global MySoftData
-    MyGui := Gui(, "RMTv1.0.4")
+    MyGui := Gui(, "RMTv1.0.4 - Modified by Xanadu13")
     MyGui.SetFont(, "Consolas")
     MySoftData.MyGui := MyGui
 
@@ -142,7 +142,7 @@ AddOperBtnUI() {
 
 GetUIAddFunc(index) {
     UIAddFuncArr := [AddMacroHotkeyUI, AddMacroHotkeyUI, AddMacroHotkeyUI, AddMacroHotkeyUI,
-        AddToolUI, AddSettingUI, AddRewardUI]
+        AddToolUI, AddSettingUI, AddInfoUI]
     return UIAddFuncArr[index]
 }
 
@@ -493,39 +493,40 @@ AddSettingUI(index) {
     MyGui.Add("Text", Format("x{} y{}", posX + 20, posY), "所有操作只有点击%应用并保存%按钮后才会生效。")
 
     posY += 20
-    MyGui.Add("Text", Format("x{} y{}", posX + 20, posY), "软件使用交流QQ群:837661891")
-
-    posY += 20
 
     tableItem := MySoftData.TableInfo[index]
     tableItem.UnderPosY := posY
 }
 
-AddRewardUI(index) {
+AddInfoUI(index) {
     MyGui := MySoftData.MyGui
     posY := MySoftData.TabPosY
     posX := MySoftData.TabPosX
 
     posY += 40
     posX += 15
-    con := MyGui.Add("Text", Format("x{} y{} w{} h{}", posX, posY, 800, 60), "RMT(若梦兔)完全免费的开源软件，如果你觉得它提升了你的效率，欢迎请我喝杯咖啡~ `n你的打赏会让我更有动力持续更新和维护这个项目！")
+    con := MyGui.Add("Link", Format("x{} y{} w{} h{}", posX, posY, 800, 60), (
+        '项目地址：<a href="https://github.com/iXanadu13/RMT">https://github.com/iXanadu13/RMT</a>`n'
+        'RMT(若梦兔)原作者仓库地址：<a href="https://github.com/zclucas/RMT">https://github.com/zclucas/RMT</a>`n'
+        'License: AGPL 3.0'
+    ))
     con.SetFont((Format("S{} W{} Q{}", 12, 600, 5)))
 
-    posY += 60
-    posX := MySoftData.TabPosX + 100
-    con := MyGui.Add("Picture", Format("x{} y{} w{} h{} center", posX, posY, 220, 220), "Images\Soft\WeiXin.png")
-    con := MyGui.Add("Text", Format("x{} y{} w{} h{} center", posX, posY + 230, 220, 50), "微信打赏")
-    con.SetFont((Format("S{} W{} Q{}", 12, 600, 5)))
+    ; posY += 60
+    ; posX := MySoftData.TabPosX + 100
+    ; con := MyGui.Add("Picture", Format("x{} y{} w{} h{} center", posX, posY, 220, 220), "Images\Soft\WeiXin.png")
+    ; con := MyGui.Add("Text", Format("x{} y{} w{} h{} center", posX, posY + 230, 220, 50), "微信打赏")
+    ; con.SetFont((Format("S{} W{} Q{}", 12, 600, 5)))
 
-    posX += 450
-    con := MyGui.Add("Picture", Format("x{} y{} w{} h{} center", posX, posY, 220, 220), "Images\Soft\ZhiFuBao.png")
-    con := MyGui.Add("Text", Format("x{} y{} w{} h{} center", posX, posY + 230, 220, 50), "支付宝打赏")
-    con.SetFont((Format("S{} W{} Q{}", 12, 600, 5)))
+    ; posX += 450
+    ; con := MyGui.Add("Picture", Format("x{} y{} w{} h{} center", posX, posY, 220, 220), "Images\Soft\ZhiFuBao.png")
+    ; con := MyGui.Add("Text", Format("x{} y{} w{} h{} center", posX, posY + 230, 220, 50), "支付宝打赏")
+    ; con.SetFont((Format("S{} W{} Q{}", 12, 600, 5)))
 
-    posY += 300
-    posX := MySoftData.TabPosX + 15
-    con := MyGui.Add("Text", Format("x{} y{} w{} h{}", posX, posY, 860, 80), "即使只是5元、10元，也是对我莫大的鼓励！当然，如果你暂时不方便，分享给朋友也是很棒的支持~`n开发不易，感谢你的每一份温暖！")
-    con.SetFont((Format("S{} W{} Q{}", 12, 600, 5)))
+    ; posY += 300
+    ; posX := MySoftData.TabPosX + 15
+    ; con := MyGui.Add("Text", Format("x{} y{} w{} h{}", posX, posY, 860, 80), "即使只是5元、10元，也是对我莫大的鼓励！当然，如果你暂时不方便，分享给朋友也是很棒的支持~`n开发不易，感谢你的每一份温暖！")
+    ; con.SetFont((Format("S{} W{} Q{}", 12, 600, 5)))
 
     posY += 35
     MySoftData.TableInfo[index].underPosY := posY

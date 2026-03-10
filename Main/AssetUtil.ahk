@@ -202,15 +202,15 @@ InitFilePath() {
     if (!DirExist(A_WorkingDir "\Setting")) {
         DirCreate(A_WorkingDir "\Setting")
     }
-    if (!DirExist(A_WorkingDir "\Images")) {
-        DirCreate(A_WorkingDir "\Images")
-    }
-    if (!DirExist(A_WorkingDir "\Images\Soft")) {
-        DirCreate(A_WorkingDir "\Images\Soft")
-    }
+    ; if (!DirExist(A_WorkingDir "\Images")) {
+    ;     DirCreate(A_WorkingDir "\Images")
+    ; }
+    ; if (!DirExist(A_WorkingDir "\Images\Soft")) {
+    ;     DirCreate(A_WorkingDir "\Images\Soft")
+    ; }
 
-    FileInstall("Images\Soft\WeiXin.png", "Images\Soft\WeiXin.png", 1)
-    FileInstall("Images\Soft\ZhiFuBao.png", "Images\Soft\ZhiFuBao.png", 1)
+    ; FileInstall("Images\Soft\WeiXin.png", "Images\Soft\WeiXin.png", 1)
+    ; FileInstall("Images\Soft\ZhiFuBao.png", "Images\Soft\ZhiFuBao.png", 1)
 
     global IniFile := A_WorkingDir "\Setting\MainSettings.ini"
     global SearchFile := A_WorkingDir "\Setting\SearchFile.ini"
