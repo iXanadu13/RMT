@@ -410,10 +410,6 @@ AddSettingUI(index) {
     MySoftData.KillMacroHotkeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 140, posY - 4), MySoftData
     .KillMacroHotkey)
 
-    MyGui.Add("Text", Format("x{} y{}", posX + 550, posY), "鼠标信息快捷方式:")
-    ToolCheckInfo.ToolCheckHotKeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 665, posY - 4),
-    ToolCheckInfo.ToolCheckHotkey
-    )
 
     posY += 30
     con := MyGui.Add("Text", Format("x{} y{} w130", posX + 20, posY), "指令录制快捷方式:")
@@ -424,6 +420,11 @@ AddSettingUI(index) {
     con := MyGui.Add("Text", Format("x{} y{} w130", posX + 290, posY), "文本提取快捷方式:")
     ToolCheckInfo.ToolTextFilterHotKeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 410, posY - 4),
     ToolCheckInfo.ToolTextFilterHotKey
+    )
+
+    MyGui.Add("Text", Format("x{} y{}", posX + 550, posY), "鼠标信息快捷方式:")
+    ToolCheckInfo.ToolCheckHotKeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 665, posY - 4),
+    ToolCheckInfo.ToolCheckHotkey
     )
 
     posY += 40
