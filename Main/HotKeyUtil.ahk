@@ -1022,10 +1022,18 @@ OnHoldPauseDown(*) {
 OnHoldPauseUp(*) {
     global MySoftData
     if (!MySoftData.IsLock && MySoftData.IsPause) {
-        MySoftData.IsPause := false
-        MySoftData.PauseToggleCtrl.Value := false
-        Suspend(false)
+        MySoftData.IsLock := true
+        ; MsgBox MySoftData.PauseResumeDelay
+        SetTimer(ResumeScript, -MySoftData.PauseResumeDelay) ; 延迟执行
     }
+}
+
+ResumeScript() {
+    global MySoftData
+    MySoftData.IsPause := false
+    MySoftData.PauseToggleCtrl.Value := false
+    Suspend(false)
+    MySoftData.IsLock := false
 }
 
 OnKillAllMacro(*) {

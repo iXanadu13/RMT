@@ -420,6 +420,9 @@ AddSettingUI(index) {
     MySoftData.KillMacroHotkeyCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 140, posY - 4), MySoftData
     .KillMacroHotkey)
 
+    con := MyGui.Add("Text", Format("x{} y{} w130", posX + 290, posY), "按住暂停恢复延迟:")
+    MySoftData.PauseResumeDelayCtrl := MyGui.Add("Edit", Format("x{} y{} w100 center", posX + 410, posY - 4), MySoftData
+    .PauseResumeDelay)
 
     posY += 30
     con := MyGui.Add("Text", Format("x{} y{} w130", posX + 20, posY), "指令录制快捷方式:")
