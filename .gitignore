@@ -1,5 +1,6 @@
 settings.ini
 .vscode
+.VSCodeCounter
 /*.code-workspace
 /*.ini
 build
